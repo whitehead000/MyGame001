@@ -7,6 +7,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(EnemyStatus))]
 public class EnemyMove : MonoBehaviour
 {
+    [SerializeField] private LayerMask raycastLayerMask; //レイヤーマスク
     private NavMeshAgent _agent;
     private RaycastHit[] _raycastHits = new RaycastHit[10];
     private EnemyStatus _status;
@@ -42,7 +43,7 @@ public class EnemyMove : MonoBehaviour
             var direction = positionDiff.normalized;
 
             //_raycastHitsに、ヒットしたColliderや座標情報などが格納される
-            var hitCount = Physics.RaycastNonAlloc(transform.position, direction, _raycastHits, distance);
+            var hitCount = Physics.RaycastNonAlloc(transform.position, direction, _raycastHits, distance, raycastLayerMask);
 
             Debug.Log("hitCount: " + hitCount);
 
