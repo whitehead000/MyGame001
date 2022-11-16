@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(Collider))]
 public class CollisionDetector : MonoBehaviour
 {
-    
+    [SerializeField] private TriggerEvent onTriggerEnter = new TriggerEvent();
     [SerializeField] private TriggerEvent onTriggerStay = new TriggerEvent();
 
     // Start is called before the first frame update
@@ -20,6 +20,11 @@ public class CollisionDetector : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        onTriggerEnter.Invoke(other);
     }
 
     //is TriggerがONで他のColliderと重なっているときは、このメソッドが常にコールされる
