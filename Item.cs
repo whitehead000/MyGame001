@@ -34,10 +34,10 @@ public class Item : MonoBehaviour
             .OnComplete(() =>
             {
                 colliderCache.enabled = true; //アニメーションが終わったらcolliderを有効化する
-            }
-            );
+            });
     }
 
+    //プレイヤーがアイテムに接触したら所持品として追加し、オブジェクトをシーンから破棄
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -46,17 +46,5 @@ public class Item : MonoBehaviour
 
         //オブジェクトを破棄する
         Destroy(gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 public class MobItemDropper : MonoBehaviour
 {
     [SerializeField] [Range(0, 1)] private float dropRate = 0.1f; //アイテム出現確率
-    [SerializeField] private Item itemFrefab;
+    [SerializeField] private Item itemPrefab;
     [SerializeField] private int number = 1; //アイテム出現個数
 
     private MobStatus _status;
@@ -39,9 +39,9 @@ public class MobItemDropper : MonoBehaviour
         if (Random.Range(0, 1f) >= dropRate) return; //アイテムを出現させるかどうかの確率処理
 
         //アイテムをnumber個出現させる
-        for(var i = 0; i < number; i++)
+        for (var i = 0; i < number; i++)
         {
-            var item = Instantiate(itemFrefab, transform.position, Quaternion.identity);
+            var item = Instantiate(itemPrefab, transform.position, Quaternion.identity);
             item.Initialize();
         }
     }
